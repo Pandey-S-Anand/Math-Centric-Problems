@@ -30,15 +30,32 @@ class Solution {
 
 // Better Approach
 /*
- * A factor of a number N is a value that divides N without leaving a remainder.
- * Factors always come in pairs, meaning that if you have a factor 'x' of N, then 'N/x' is also a factor of N.
- * The exception to this rule is when 'x' is the square root of N, because in that case, the factor pair is the same.
- * The key observation is that only perfect square numbers have an odd number of
- * factors because in perfect squares,the square root is a factor that doesn't have a pair.
- * For non-perfect squares, the square root is not an integer, so all factors come in pairs.
- * So, when you're asked to count the numbers with an odd number of factors from 1 to N,
- * you're essentially counting the perfect squares within that range, because only they have an odd number of factors.
+ * A factor of a number N is any integer that divides N evenly (without leaving a remainder).
+ * Factors typically come in pairs. For example, if 'x' is a factor of N, then 'N/x' is also a factor of N.
+ * The only exception to this rule occurs when 'x' is the square root of N. In this case, the factor pair is the same (e.g., for 36, the factor 6 pairs with itself).
+ * 
+ * The key observation is that only perfect square numbers have an odd number of factors. This happens because, for a perfect square, the square root is a factor that does not pair with any other factor.
+ * For non-perfect squares, the square root is not an integer, meaning all factors come in distinct pairs.
+ * 
+ * Therefore, when asked to count numbers that have an odd number of factors from 1 to N, you are essentially counting how many perfect squares there are within that range.
+ * 
+ * Example:
+ * Consider N = 10:
+ * Factors of numbers from 1 to 10:
+ * 1 has 1 factor (1), so it has an odd number of factors (perfect square).
+ * 2 has 2 factors (1, 2), so it has an even number of factors.
+ * 3 has 2 factors (1, 3), so it has an even number of factors.
+ * 4 has 3 factors (1, 2, 4), so it has an odd number of factors (perfect square).
+ * 5 has 2 factors (1, 5), so it has an even number of factors.
+ * 6 has 4 factors (1, 2, 3, 6), so it has an even number of factors.
+ * 7 has 2 factors (1, 7), so it has an even number of factors.
+ * 8 has 4 factors (1, 2, 4, 8), so it has an even number of factors.
+ * 9 has 3 factors (1, 3, 9), so it has an odd number of factors (perfect square).
+ * 10 has 4 factors (1, 2, 5, 10), so it has an even number of factors.
+ * 
+ * So, there are 3 numbers (1, 4, 9) that have an odd number of factors in the range 1 to 10 (which are perfect squares).
  */
+
 
 class Solution {
     static long count(int N) {
