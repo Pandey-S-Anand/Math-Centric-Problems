@@ -1,0 +1,38 @@
+class Solution {
+    static long MOD = 1000000007L;
+
+    public long[] factorial(long[] numbers, int size) {
+        long maxNumber = findMaxValue(numbers, size);
+        long[] precomputedFactorials = precomputeFactorials(maxNumber);
+        long[] factorials = new long[size];
+
+        for (int i = 0; i < size; i++) {
+            factorials[i] = precomputedFactorials[(int) numbers[i]];
+        }
+
+        return factorials;
+    }
+
+    private long findMaxValue(long[] numbers, int size) {
+        long maxValue = numbers[0];
+        for (int i = 1; i < size; i++) {
+            if (numbers[i] > maxValue) {
+                maxValue = numbers[i];
+            }
+        }
+        return maxValue;
+    }
+
+    private long[] precomputeFactorials(long maxNumber) {
+        // Array to store factorials up to the maximum number
+        long[] factorials = new long[(int) (maxNumber + 1)];
+        factorials[0] = 1L; // 0! = 1
+
+        // Compute factorials using dynamic programming
+        for (int num = 1; num <= maxNumber; num++) {
+            factorials[num] = (factorials[num - 1] * num) % MOD;
+        }
+
+        return factorials;
+    }
+}
